@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>crowdbricks viewer</title>
+<style>
+  :root { --bg: #000; --fg: #f2f2f2; --quiet: #8a8a8a; --pink: #f53cd1; --panel: rgba(12, 12, 12, 0.82); }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); color: var(--fg); font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  canvas { display: block; }
+  #hud { position: fixed; left: 12px; top: 12px; padding: 10px 12px; background: var(--panel); border-radius: 6px; min-width: 260px; }
+  #hud b { color: var(--pink); font-weight: 600; }
+  #hud .quiet { color: var(--quiet); }
+  #bar { position: fixed; left: 12px; right: 12px; bottom: 12px; display: flex; gap: 10px; align-items: center; padding: 8px 12px; background: var(--panel); border-radius: 6px; }
+  #bar input[type=range] { flex: 1; accent-color: var(--pink); }
+  button, select { background: #1b1b1b; color: var(--fg); border: 1px solid #333; border-radius: 4px; padding: 4px 10px; font: inherit; cursor: pointer; }
+  label { color: var(--quiet); user-select: none; }
+  #drop { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; font-size: 18px; color: var(--quiet); }
+  #drop.show { display: flex; }
+</style>
+<script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+                 "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/" } }
+</script>
+</head>
+<body>
+<div id="hud">loading…</div>
+<div id="bar">
+  <button id="play">pause</button>
+  <input id="time" type="range" min="0" max="1" step="0.001" value="0">
+  <span id="clock">0.00 s</span>
+  <select id="speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select>
+  <label><input id="plans" type="checkbox" checked> plans</label>
+  <label><input id="prints" type="checkbox" checked> footprints</label>
+  <label>follow <select id="follow"><option value="-1">none</option></select></label>
+  <input id="file" type="file" accept=".take" style="display:none">
+  <button id="open">open take…</button>
+</div>
+<div id="drop">drop a .take file</div>
+<script type="module" src="viewer.js"></script>
+</body>
+</html>

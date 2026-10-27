@@ -1,0 +1,14 @@
+crowdbricks
+Copyright 2026 Patch
+
+This product includes software developed by NVIDIA CORPORATION & AFFILIATES:
+crowdbricks/kernels.py adapts the SOMA encode, conditions, decode and endpoint-correction kernels
+of NVIDIA MotionBricks (https://github.com/NVlabs/motionbricks, motionbricks/model/soma/kernels.py
+and motionbricks/model/kernels.py), Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES,
+licensed under the Apache License, Version 2.0. The adaptation adds a batch dimension, a number
+of target poses per request, and foot contacts per request.
+
+crowdbricks does not include NVIDIA's MotionBricks models, rig assets, Smart Primitives or sample
+motion clips. They load at run time from your own MotionBricks checkout, under their own terms:
+the models under the NVIDIA Open Model Agreement, the sample motion clips under the NVIDIA Sample
+Data Evaluation License.

@@ -1,0 +1,10 @@
+__pycache__/
+*.egg-info/
+.pytest_cache/
+# TensorRT plans: built on first run, per GPU, batch size and precision.
+trt-cache/
+.trt-cache/
+# Recordings and the exported mesh stay local (see viewer/export_character.py).
+*.take
+viewer/soma.bin
+.ruff_cache/
