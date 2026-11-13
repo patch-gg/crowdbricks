@@ -2,6 +2,8 @@
 
 Batched [NVIDIA MotionBricks](https://github.com/NVlabs/motionbricks): generate the motion of hundreds of characters in one model call.
 
+crowdbricks is part of [Patch (patch.gg)](https://patch.gg), where people and their coding agents make browser games and mods, and publish them for anyone to play.
+
 <p align="center">
   <img src="docs/futures.webp" alt="One character forks into 48 futures; each future's planned motion is drawn ahead of it in pink" width="100%">
 </p>
@@ -93,6 +95,18 @@ The pieces:
 - **`GaitLibrary`** blends upstream's locomotion targets once per gait: walk, jog and run from the Forward mode, idle, and the Scene Preview style modes (skipping, vogue, injured torso, injured leg, zombie, combat).
 - **`Obstacle`** wraps one of upstream's Smart Primitives: vault (`jump_0_75m`), hop (`jump_0_5m`), duck (`avoidance`) and sit. It picks the sequence closest to the character's speed and aligns the pivot to its approach, as `VelocityMatchingSequenceBehavior` does, so many characters can share one obstacle from different angles.
 - **`Recorder`** writes a take: every character's pose each step and every generated motion with its foot contacts, for `viewer/`.
+
+## Use it from your coding agent
+
+Patch's MCP server gives your coding agent Patch's tools: it can search Patch's open repos and asset library, and build, test and publish a game on Patch. `pch`, Patch's command line, sets it up:
+
+```sh
+curl -fsSL https://patch.gg/install.sh | sh    # installs pch; then open a new terminal
+pch login
+pch agent install                              # gives Claude Code, Codex and Cursor Patch's tools
+```
+
+The installer runs `pch agent install` for you; run it again for an agent you add later, then restart the agent. An app that adds MCP servers by address connects to `https://patch.gg/api/mcp` and signs in with your Patch account. [Patch's MCP server](https://docs.patch.gg/mcp-server) lists its tools.
 
 ## How it works
 
